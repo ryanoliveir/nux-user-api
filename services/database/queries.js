@@ -16,8 +16,15 @@ const conectionCheck = async function(req, res){
 
 
 
+const getUsers = async function(req, res){
+    
+    const users = await User.findAll()
 
+    res.json({"users": users})
+}
 
 module.exports = {
-    conectionCheck
+    conectionCheck,
+    getUsers
+
 }

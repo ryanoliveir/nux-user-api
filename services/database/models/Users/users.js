@@ -18,7 +18,7 @@ const User = database.define("users",{
         type: Sequelize.STRING(255),
     },
     privilege: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.ENUM("1","2","3"),
     },
     user_status: {
         type: Sequelize.ENUM("on", "off")

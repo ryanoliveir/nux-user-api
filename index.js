@@ -12,6 +12,9 @@ const database = require('./services/database/queries')
 const registerUser = require('./services/controllers/registerController')
 
 app.get("/database", database.conectionCheck)
+app.get("/users", database.getUsers)
+
+
 
 app.use("/register", registerUser)
 
