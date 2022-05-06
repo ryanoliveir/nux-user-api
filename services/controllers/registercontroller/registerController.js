@@ -6,18 +6,29 @@ const express = require('express');
 //const UserPrivilege = require('../database/models/UserPrivileges/user_privileges')
 //
 //const bcrypt = require('bcryptjs')
-const registerRoot = require('./root')
+const root = require('./root')
 
 router.use(express.urlencoded({ extended: true }))
 
-
+//VERIFICAR DE É ROOT, FAZER MIDWARE PARA ISSO
 
 router.post('/root', async (req, res) => {
     const { nickName, emailAdress, userPassword, privilegeType, userStatus } = req.body;
 
-    registerRoot(nickName, emailAdress, userPassword, privilegeType, userStatus )
+    root.registerUser(nickName, emailAdress, userPassword, privilegeType, userStatus )
 
     res.status(200).end()
+    
+})
+
+router.delete('/root', async (req, res) => {
+    const { nickName } = req.body
+
+    
+    let message = await root.removeUser(nickName)
+    console.log(message)
+    res.json({ "message": message })
+    
     
 })
 

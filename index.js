@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended: true}))
 
 const database = require('./services/database/queries')
 
-const registerUser = require('./services/controllers/registerController')
+const registerUser = require('./services/controllers/registercontroller/registerController')
 
 app.get("/database", database.conectionCheck)
 app.get("/users", database.getUsers)

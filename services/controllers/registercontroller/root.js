@@ -1,6 +1,6 @@
-const database = require('../database/db')
-const User = require('../database/models/Users/users')
-const UserPrivilege = require('../database/models/UserPrivileges/user_privileges')
+const database = require('../../database/db')
+const User = require('../../database/models/Users/users')
+const UserPrivilege = require('../../database/models/UserPrivileges/user_privileges')
 
 const bcrypt = require('bcryptjs')
 
@@ -51,4 +51,24 @@ const registerUser = async (nickName, emailAdress, userPassword, privilegeType, 
     
 }
 
-module.exports = registerUser
+const removeUser = async (nickName) => {
+    
+    const user = await User.findOne({where: {nick_name: nickName}})
+    
+    if (user){
+    await UserPrivilege.destroy({where: {id_credencial: user.id_user}})
+        await User.destroy({where: {nick_name: nickName}})
+        let message = "User has been removed!"
+        return message
+
+    }else{
+        let message = "User not find!"
+        return message
+    }
+
+}
+
+module.exports = {
+    registerUser, 
+    removeUser
+}
