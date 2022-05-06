@@ -14,37 +14,29 @@ router.use(express.urlencoded({ extended: true }))
 
 
 router.post('/root', async (req, res) => {
-    const { nickName, emailAdress, userPassword, privilegeType, UserStatus="off" } = req.body;
+    const { nickName, emailAdress, userPassword, privilegeType, userStatus } = req.body;
 
     const register = async () => {
-        console.log(nickName, emailAdress, userPassword, privilegeType, UserStatus)
+        console.log(nickName, emailAdress, userPassword, privilegeType, userStatus)
     
         
         User.create({
             nick_name: nickName,
             email: emailAdress,
             user_password: await bcrypt.hash(String(userPassword), 10),
-            
-            user_status: UserStatus
+            user_status: userStatus
         })
         await database.sync()
     
         const user = await User.findOne({ where :{email: emailAdress}})
-        console.log(user.id_user)
-        console.log(privilegeType)
+                
     
-        try {
-            await UserPrivilege.create({
-                id_credencial: user.id_user
-            })
-            
-        } catch (error) {
-            console.log(error)
-        }
+
+        UserPrivilege.create({
+            id_credencial: user.id_user,
+            privilege_category: privilegeType
     
-        //UserPrivilege.create({
-        //    id_credencial: user.id_user
-        //})
+        })
 
         await database.sync()
     }
