@@ -8,6 +8,9 @@ const User = database.define("users",{
         allowNull: false,
         primaryKey: true,
     },
+    nick_name: {
+        type: Sequelize.STRING(50),
+    },
     email: {
         type: Sequelize.STRING(50),
     },

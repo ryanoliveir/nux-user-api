@@ -1,6 +1,6 @@
 const database = require('./db')
 const User= require('./models/Users/users')
-const UserManager= require('./models/UserPrivileges/user_privileges')
+const UserPrivileges= require('./models/UserPrivileges/user_privileges')
 
 const conectionCheck = async function(req, res){
     try{
@@ -13,6 +13,8 @@ const conectionCheck = async function(req, res){
 
 
 }
+
+
 
 
 

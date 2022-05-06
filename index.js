@@ -9,12 +9,13 @@ app.use(express.urlencoded({extended: true}))
 
 const database = require('./services/database/queries')
 
-
+const registerUser = require('./services/controllers/registerController')
 
 app.get("/database", database.conectionCheck)
 
+app.use("/register", registerUser)
 
 
 app.listen(80, function() {
-    console.log('Listening on http://localhost:8080\n')
+    console.log('Listening on http://localhost/\n')
 })
