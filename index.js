@@ -1,5 +1,4 @@
 const express = require('express');
-const { get } = require('express/lib/response');
 
 const app = express();
 
@@ -12,20 +11,10 @@ const database = require('./services/database/queries')
 
 
 
-
 app.get("/database", database.conectionCheck)
 
 
 
-app.listen(8080, function() {
+app.listen(80, function() {
     console.log('Listening on http://localhost:8080\n')
 })
-
-
-
-
-
-
-
-
-
