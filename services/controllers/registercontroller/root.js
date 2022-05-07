@@ -70,7 +70,13 @@ const removeUser = async (nickName) => {
 
 }
 
+const getUsers = async () => {
+    return await User.findAll()
+}
+
 module.exports = {
     registerUser, 
-    removeUser
+    removeUser,
+    getUsers
+    
 }

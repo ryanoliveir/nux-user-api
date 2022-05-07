@@ -38,5 +38,11 @@ router.delete('/root', async (req, res) => {
 })
 
 
+router.get('/root', async (req, res) => {
+    const users = await root.getUsers()
+    res.json({ "users": users })
+})
+
+
 
 module.exports = router;

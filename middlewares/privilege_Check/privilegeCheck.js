@@ -15,7 +15,7 @@ const privilegeCheck = async (req, res, next) => {
 
         case "3":
             console.log("geral")
-            return next()
+            res.status(401).end()
 
         default:
             break;

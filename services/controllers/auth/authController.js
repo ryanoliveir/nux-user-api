@@ -31,7 +31,7 @@ router.post("/authenticate", async (req, res) => {
 })
 
 router.get("/logout", async (req, res) =>{
-    req.session.destroy
+    req.session.destroy()
     res.send({message: "See you..."})
 })
 
