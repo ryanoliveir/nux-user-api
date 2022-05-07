@@ -2,6 +2,8 @@ const database = require('../../database/db')
 const User = require('../../database/models/Users/users')
 const UserPrivilege = require('../../database/models/UserPrivileges/user_privileges')
 
+
+
 const bcrypt = require('bcryptjs')
 
 const registerUser = async (nickName, emailAdress, userPassword, privilegeType, userStatus) => {

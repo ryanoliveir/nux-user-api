@@ -1,11 +1,16 @@
 const router = require('express').Router();
 const express = require('express');
 
+const authMiddleware = require('../../../middlewares/auth_Autorization/auth_autorization')
+const privilegeCheck = require('../../../middlewares/privilege_Check/privilegeCheck')
 //const database = require('../database/db')
 //const User = require('../database/models/Users/users')
 //const UserPrivilege = require('../database/models/UserPrivileges/user_privileges')
 //
 //const bcrypt = require('bcryptjs')
+
+router.use(authMiddleware)
+router.use(privilegeCheck)
 const root = require('./root')
 
 router.use(express.urlencoded({ extended: true }))
